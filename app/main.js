@@ -11,6 +11,7 @@
 // 		e. Max temp
 // 5. Have the temperature turn blue if under 40, and red if above 90
 
+
 //save url to GET weather using zip code from the API
 const u1 = 'http://api.openweathermap.org/data/2.5/weather?zip=';
 //save personal key to attach to end of URL for API use
@@ -32,22 +33,36 @@ let weather = (z) => {
     .then( (r) => {
         return r.json(); //grab the json data
     }).then( (d) => {
-        let city = document.createElement('h3');
+        let city = document.createElement('h3'); 
         city.innerHTML = 'City: ' + d.name;
-        city.setAttribute('id', 'city');
-        let cTemp = document.createElement('h3');
-        cTemp.innerHTML = 'Current Temp: ' + d.main.temp;
+
         let wDesc = document.createElement('h3');
         wDesc.innerHTML = 'Weather Description: ' + d.weather[0].description;
+
+        let cTemp = document.createElement('h3');
+        let c = Math.floor(d.main.temp * 9/5 - 459.67); //kelvin to F
+        cTemp.innerHTML = `Current Temp: ${c}F`;
+        
+
         let minTemp = document.createElement('h3');
         minTemp.innerHTML = 'Min Temp: ' + d.main.temp_min;
+            minTemp.setAttribute('id', 'minTemp');
         let maxTemp = document.createElement('h3');
         maxTemp.innerHTML = 'Max Temp: ' + d.main.temp_max;
-
+            maxTemp.setAttribute('id', 'maxTemp');
         document.getElementById('container').appendChild(city).appendChild(cTemp).appendChild(wDesc).appendChild(minTemp).appendChild(maxTemp);
     })
 };
 //call/initialize click function
+let checkTemp = () => {
+    let min = document.querySelector('#minTemp').innerHTML;
+    let max = document.querySelector('#maxTemp').innerHTML;
+    let cur = document.querySelector('#cTemp').innerHTML;
+    // if (min.includes())
+    
+// let max = Math.floor(data.main.temp_max * 9/5 - 459.67);  //kelvin to faranheit
+
+}
 click();
 
 
