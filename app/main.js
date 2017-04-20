@@ -50,6 +50,7 @@ let weather = (z) => {
         let maxTemp = document.createElement('h3');
         let max = Math.floor(d.main.temp_max * 9/5 - 459.67); //kelvin to F
         maxTemp.innerHTML = `Maximum Temperature: ${max}F`;
+        
         //if weather is hot (< 40F) change color to red
         //if weather is cold (> 90F) change color to blue
         if (max < 40) {
