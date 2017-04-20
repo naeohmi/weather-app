@@ -42,28 +42,34 @@ let weather = (z) => {
         let cTemp = document.createElement('h3');
         let c = Math.floor(d.main.temp * 9/5 - 459.67); //kelvin to F
         cTemp.innerHTML = `Current Temp: ${c}F`;
-        
 
         let minTemp = document.createElement('h3');
-        minTemp.innerHTML = 'Min Temp: ' + d.main.temp_min;
-            minTemp.setAttribute('id', 'minTemp');
+        let min = Math.floor(d.main.temp_min * 9/5 - 459.67); //kelvin to F
+        minTemp.innerHTML = `Minimum Temperature: ${min}F`;
+        
         let maxTemp = document.createElement('h3');
-        maxTemp.innerHTML = 'Max Temp: ' + d.main.temp_max;
-            maxTemp.setAttribute('id', 'maxTemp');
+        let max = Math.floor(d.main.temp_max * 9/5 - 459.67); //kelvin to F
+        maxTemp.innerHTML = `Maximum Temperature: ${max}F`;
+        //if weather is hot (< 40F) change color to red
+        //if weather is cold (> 90F) change color to blue
+        if (max < 40) {
+            maxTemp.setAttribute('style', 'color: blue');
+        } else if (max > 90) {
+            maxTemp.setAttribute('style', 'color: red');
+        }
+        if (min < 40) {
+            minTemp.setAttribute('style', 'color: blue');
+        } else if (min > 90) {
+            minTemp.setAttribute('style', 'color: red');
+        }
+        if (c < 40) {
+            cTemp.setAttribute('style', 'color: blue');
+        } else if (c > 90) {
+            cTemp.setAttribute('style', 'color: red');
+        }
         document.getElementById('container').appendChild(city).appendChild(cTemp).appendChild(wDesc).appendChild(minTemp).appendChild(maxTemp);
+
     })
 };
 //call/initialize click function
-let checkTemp = () => {
-    let min = document.querySelector('#minTemp').innerHTML;
-    let max = document.querySelector('#maxTemp').innerHTML;
-    let cur = document.querySelector('#cTemp').innerHTML;
-    // if (min.includes())
-    
-// let max = Math.floor(data.main.temp_max * 9/5 - 459.67);  //kelvin to faranheit
-
-}
 click();
-
-
-
