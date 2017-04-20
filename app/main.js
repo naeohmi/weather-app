@@ -21,19 +21,17 @@ const u2 = '&APPID=3bfe1bb3354e449001b55ef397099f50';
 let click = () => {
     const submit = document.getElementById('submit');
     submit.addEventListener('click', () => {
-        let z = document.getElementById('zip').value; //grab the text that was input as the 'value'
-        console.log(z);
+        let z = document.getElementById('zip').value; //grab the text, input as the 'value'
         weather(z);
     });
 };
-
 //using the zipcode, add the necessary data step by step, to the innerHTML of the page
 //although fetch is still 'experimental' seemed like a fun/cool chance to use it here
 let weather = (z) => {
     fetch(u1 + z + u2) //the full URL with zipcode
-    .then(function (r) {
+    .then( (r) => {
         return r.json(); //grab the json data
-    }).then(function (d) {
+    }).then( (d) => {
         let city = document.createElement('h3');
         city.innerHTML = 'City: ' + d.name;
         city.setAttribute('id', 'city');
