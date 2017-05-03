@@ -30,7 +30,7 @@ let click = () => {
 let weather = (z) => {
     axios(u1 + z + u2) //the full URL with zipcode
     .then( (r) => {
-        return r.data(); //grab the data
+        return r.data; //grab the data
     }).then( (d) => {
         let city = document.createElement('h3'); 
         city.innerHTML = 'City: ' + d.name;
