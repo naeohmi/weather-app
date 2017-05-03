@@ -28,9 +28,9 @@ let click = () => {
 //using the zipcode, add the necessary data step by step, to the innerHTML of the page
 //although fetch is still 'experimental' seemed like a fun/cool chance to use it here
 let weather = (z) => {
-    fetch(u1 + z + u2) //the full URL with zipcode
+    axios(u1 + z + u2) //the full URL with zipcode
     .then( (r) => {
-        return r.json(); //grab the json data
+        return r.data(); //grab the data
     }).then( (d) => {
         let city = document.createElement('h3'); 
         city.innerHTML = 'City: ' + d.name;
